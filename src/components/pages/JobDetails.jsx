@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { format } from 'date-fns'
-import Card from '@/components/atoms/Card'
-import Button from '@/components/atoms/Button'
-import Badge from '@/components/atoms/Badge'
-import Loading from '@/components/ui/Loading'
-import Error from '@/components/ui/Error'
-import { JobService } from '@/services/api/JobService'
-import ApperIcon from '@/components/ApperIcon'
-import { toast } from 'react-toastify'
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { format } from "date-fns";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import Badge from "@/components/atoms/Badge";
+import Card from "@/components/atoms/Card";
+import Button from "@/components/atoms/Button";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import companiesData from "@/services/mockData/companies.json";
+import applicationsData from "@/services/mockData/applications.json";
+import jobsData from "@/services/mockData/jobs.json";
+import userData from "@/services/mockData/user.json";
+import { JobService } from "@/services/api/JobService";
 
 const JobDetails = () => {
   const { id } = useParams()
@@ -92,9 +96,9 @@ const JobDetails = () => {
     }
   }
   
-  if (loading) return <Loading />
+if (loading) return <Loading />
   if (error) return <Error message={error} onRetry={loadJob} />
-  if (!job) return <Error message="Job not found" />
+  if (!job) return <Error message="Job not found" onRetry={loadJob} />
   
   return (
     <div className="min-h-screen bg-gray-50">
@@ -112,34 +116,32 @@ const JobDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
             {/* Job Header */}
-            <Card>
+<Card>
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center text-white font-bold text-2xl">
-                  {job.company?.charAt(0) || 'C'}
+                  {job?.company?.charAt(0) || 'C'}
                 </div>
                 <div className="flex-1">
                   <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                    {job.title}
+                    {job?.title}
                   </h1>
-                  <p className="text-xl text-gray-600 mb-4">{job.company}</p>
-                  
+<p className="text-xl text-gray-600 mb-4">{job?.company}</p>
                   <div className="flex items-center gap-4 text-gray-600 mb-4">
                     <div className="flex items-center gap-1">
                       <ApperIcon name="MapPin" className="w-4 h-4" />
-                      {job.location}
+                      {job?.location}
                     </div>
                     <div className="flex items-center gap-1">
                       <ApperIcon name="Calendar" className="w-4 h-4" />
-                      Posted {format(new Date(job.postedDate), 'MMM dd, yyyy')}
+                      Posted {job?.postedDate ? format(new Date(job.postedDate), 'MMM dd, yyyy') : 'Unknown'}
                     </div>
                   </div>
-                  
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <Badge variant={getJobTypeColor(job.type)}>
-                      {job.type}
+<div className="flex items-center gap-2 flex-wrap">
+                    <Badge variant={getJobTypeColor(job?.type)}>
+                      {job?.type}
                     </Badge>
                     <Badge variant="default">
-                      {formatSalary(job.salary)}
+                      {formatSalary(job?.salary)}
                     </Badge>
                   </div>
                 </div>
@@ -147,17 +149,17 @@ const JobDetails = () => {
             </Card>
             
             {/* Job Description */}
-            <Card>
+<Card>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Job Description</h2>
               <div className="prose max-w-none">
                 <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {job.description}
+                  {job?.description}
                 </p>
               </div>
             </Card>
             
             {/* Requirements */}
-            {job.requirements && job.requirements.length > 0 && (
+{job?.requirements && job.requirements.length > 0 && (
               <Card>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Requirements</h2>
                 <ul className="space-y-3">
@@ -172,7 +174,7 @@ const JobDetails = () => {
             )}
             
             {/* Benefits */}
-            {job.benefits && job.benefits.length > 0 && (
+{job?.benefits && job.benefits.length > 0 && (
               <Card>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Benefits</h2>
                 <ul className="space-y-3">
@@ -191,20 +193,20 @@ const JobDetails = () => {
             <Card className="sticky top-6">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Apply for this job</h3>
               
-              <div className="space-y-4 mb-6">
+<div className="space-y-4 mb-6">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Salary</span>
-                  <span className="font-medium">{formatSalary(job.salary)}</span>
+                  <span className="font-medium">{formatSalary(job?.salary)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Job Type</span>
-                  <span className="font-medium">{job.type}</span>
+                  <span className="font-medium">{job?.type}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Location</span>
-                  <span className="font-medium">{job.location}</span>
+                  <span className="font-medium">{job?.location}</span>
                 </div>
-                {job.applicationDeadline && (
+{job?.applicationDeadline && (
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Deadline</span>
                     <span className="font-medium">

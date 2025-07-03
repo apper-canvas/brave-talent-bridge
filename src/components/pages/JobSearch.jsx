@@ -185,9 +185,9 @@ const JobSearch = () => {
             ) : (
               <>
                 <div className="space-y-6">
-                  {currentJobs.map((job) => (
+{currentJobs.map((job) => (
                     <JobCard
-                      key={job.Id}
+                      key={job.id}
                       job={job}
                       onApply={handleApply}
                     />

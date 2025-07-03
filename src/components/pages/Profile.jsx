@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import Card from '@/components/atoms/Card'
-import Button from '@/components/atoms/Button'
-import Input from '@/components/atoms/Input'
-import Badge from '@/components/atoms/Badge'
-import Loading from '@/components/ui/Loading'
-import Error from '@/components/ui/Error'
-import ProfileSection from '@/components/molecules/ProfileSection'
-import { UserService } from '@/services/api/UserService'
-import ApperIcon from '@/components/ApperIcon'
-import { toast } from 'react-toastify'
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import Badge from "@/components/atoms/Badge";
+import Card from "@/components/atoms/Card";
+import Input from "@/components/atoms/Input";
+import Button from "@/components/atoms/Button";
+import ProfileSection from "@/components/molecules/ProfileSection";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import { UserService } from "@/services/api/UserService";
 
 const Profile = () => {
   const [user, setUser] = useState(null)
@@ -65,9 +65,9 @@ const Profile = () => {
     }
   }
   
-  if (loading) return <Loading type="profile" />
+if (loading) return <Loading type="profile" />
   if (error) return <Error message={error} onRetry={loadProfile} type="profile" />
-  if (!user) return <Error message="Profile not found" />
+  if (!user) return <Error message="Profile not found" onRetry={loadProfile} />
   
   return (
     <div className="min-h-screen bg-gray-50">
@@ -83,30 +83,30 @@ const Profile = () => {
         
         <div className="space-y-8">
           {/* Profile Header */}
-          <Card>
+<Card>
             <div className="flex items-start gap-6">
               <div className="w-24 h-24 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-3xl">
-                {user.name?.charAt(0) || 'U'}
+                {user?.name?.charAt(0) || 'U'}
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  {user.name || 'Your Name'}
-                </h2>
+                  {user?.name || 'Your Name'}
+</h2>
                 <p className="text-lg text-gray-600 mb-3">
-                  {user.headline || 'Add your professional headline'}
+                  {user?.headline || 'Add your professional headline'}
                 </p>
                 <div className="flex items-center gap-4 text-gray-500 mb-4">
                   <div className="flex items-center gap-1">
                     <ApperIcon name="MapPin" className="w-4 h-4" />
-                    {user.location || 'Add location'}
+                    {user?.location || 'Add location'}
                   </div>
                   <div className="flex items-center gap-1">
                     <ApperIcon name="Mail" className="w-4 h-4" />
-                    {user.email || 'Add email'}
-                  </div>
+                    {user?.email || 'Add email'}
+</div>
                   <div className="flex items-center gap-1">
                     <ApperIcon name="Phone" className="w-4 h-4" />
-                    {user.phone || 'Add phone'}
+                    {user?.phone || 'Add phone'}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -147,16 +147,16 @@ const Profile = () => {
           >
             {({ isEditing }) => (
               <div>
-                {isEditing ? (
+{isEditing ? (
                   <textarea
                     className="w-full h-32 p-4 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     placeholder="Write a brief summary of your professional background and career goals..."
-                    value={user.summary || ''}
+                    value={user?.summary || ''}
                     onChange={(e) => setUser({ ...user, summary: e.target.value })}
                   />
                 ) : (
                   <p className="text-gray-700 leading-relaxed">
-                    {user.summary || 'Add a professional summary to highlight your experience and career goals.'}
+                    {user?.summary || 'Add a professional summary to highlight your experience and career goals.'}
                   </p>
                 )}
               </div>
@@ -173,10 +173,10 @@ const Profile = () => {
             {({ isEditing }) => (
               <div>
                 {isEditing ? (
-                  <div>
+<div>
                     <Input
                       placeholder="Add skills separated by commas (e.g., JavaScript, React, Node.js)"
-                      value={user.skills?.join(', ') || ''}
+                      value={user?.skills?.join(', ') || ''}
                       onChange={(e) => setUser({ ...user, skills: e.target.value.split(',').map(s => s.trim()) })}
                     />
                     <p className="text-sm text-gray-500 mt-2">
@@ -184,8 +184,8 @@ const Profile = () => {
                     </p>
                   </div>
                 ) : (
-                  <div>
-                    {user.skills && user.skills.length > 0 ? (
+<div>
+                    {user?.skills && user.skills.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
                         {user.skills.map((skill, index) => (
                           <Badge key={index} variant="primary">
@@ -213,18 +213,18 @@ const Profile = () => {
           >
             {({ isEditing }) => (
               <div>
-                {user.experience && user.experience.length > 0 ? (
+{user?.experience && user.experience.length > 0 ? (
                   <div className="space-y-6">
-                    {user.experience.map((exp, index) => (
+{user.experience.map((exp, index) => (
                       <div key={index} className="border-l-4 border-primary pl-4">
                         <h4 className="font-semibold text-lg text-gray-900">
-                          {exp.position}
+                          {exp?.position}
                         </h4>
-                        <p className="text-gray-600 font-medium">{exp.company}</p>
+                        <p className="text-gray-600 font-medium">{exp?.company}</p>
                         <p className="text-sm text-gray-500 mb-2">
-                          {exp.startDate} - {exp.endDate || 'Present'}
+                          {exp?.startDate} - {exp?.endDate || 'Present'}
                         </p>
-                        <p className="text-gray-700">{exp.description}</p>
+                        <p className="text-gray-700">{exp?.description}</p>
                       </div>
                     ))}
                   </div>
@@ -246,16 +246,16 @@ const Profile = () => {
           >
             {({ isEditing }) => (
               <div>
-                {user.education && user.education.length > 0 ? (
+{user?.education && user.education.length > 0 ? (
                   <div className="space-y-4">
                     {user.education.map((edu, index) => (
                       <div key={index} className="border-l-4 border-secondary pl-4">
-                        <h4 className="font-semibold text-lg text-gray-900">
-                          {edu.degree}
+<h4 className="font-semibold text-lg text-gray-900">
+                          {edu?.degree}
                         </h4>
-                        <p className="text-gray-600 font-medium">{edu.institution}</p>
+                        <p className="text-gray-600 font-medium">{edu?.institution}</p>
                         <p className="text-sm text-gray-500">
-                          {edu.graduationYear}
+                          {edu?.graduationYear}
                         </p>
                       </div>
                     ))}
@@ -275,14 +275,14 @@ const Profile = () => {
             icon="FileText"
           >
             <div>
-              {user.resumeUrl ? (
+{user?.resumeUrl ? (
                 <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
                   <div className="w-12 h-12 bg-gradient-to-r from-accent to-green-600 rounded-lg flex items-center justify-center">
                     <ApperIcon name="FileText" className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
                     <p className="font-medium text-gray-900">
-                      {user.resumeFileName || 'Resume.pdf'}
+                      {user?.resumeFileName || 'Resume.pdf'}
                     </p>
                     <p className="text-sm text-gray-500">
                       Last updated: {new Date().toLocaleDateString()}
@@ -291,8 +291,8 @@ const Profile = () => {
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
-                      size="sm"
-                      onClick={() => window.open(user.resumeUrl, '_blank')}
+size="sm"
+                      onClick={() => window.open(user?.resumeUrl, '_blank')}
                       icon="Eye"
                     >
                       View
