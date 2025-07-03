@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "userId": "user123",
+    "jobId": 1,
+    "status": "interview",
+    "appliedDate": "2024-01-16T10:00:00Z",
+    "coverLetter": "I am excited to apply for the Senior Frontend Developer position at TechCorp Inc. With over 5 years of experience in React and TypeScript, I am confident I can contribute significantly to your team's success.",
+    "resumeVersion": "resume_v2.pdf"
+  },
+  {
+    "Id": 2,
+    "userId": "user123",
+    "jobId": 3,
+    "status": "pending",
+    "appliedDate": "2024-01-14T14:30:00Z",
+    "coverLetter": "I am passionate about creating user-centered designs and would love to bring my UX/UI expertise to DesignStudio Pro. My portfolio demonstrates my ability to solve complex design challenges.",
+    "resumeVersion": "resume_v2.pdf"
+  },
+  {
+    "Id": 3,
+    "userId": "user123",
+    "jobId": 5,
+    "status": "reviewing",
+    "appliedDate": "2024-01-10T09:15:00Z",
+    "coverLetter": "As a marketing professional with a strong background in digital marketing and content creation, I am excited about the opportunity to help drive GrowthCo's marketing initiatives.",
+    "resumeVersion": "resume_v2.pdf"
+  },
+  {
+    "Id": 4,
+    "userId": "user123",
+    "jobId": 2,
+    "status": "rejected",
+    "appliedDate": "2024-01-08T16:45:00Z",
+    "coverLetter": "I am interested in the Product Manager role at InnovateLabs. My experience in SaaS product management and agile methodologies makes me a strong candidate for this position.",
+    "resumeVersion": "resume_v1.pdf"
+  },
+  {
+    "Id": 5,
+    "userId": "user123",
+    "jobId": 7,
+    "status": "hired",
+    "appliedDate": "2024-01-05T11:20:00Z",
+    "coverLetter": "I am thrilled to apply for the DevOps Engineer position at CloudFirst Inc. My extensive experience with AWS, Kubernetes, and CI/CD pipelines aligns perfectly with your requirements.",
+    "resumeVersion": "resume_v2.pdf"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "Id": 1,
+    "name": "TechCorp Inc.",
+    "description": "Leading technology company specializing in innovative software solutions for enterprises. We build scalable platforms that help businesses transform digitally.",
+    "industry": "Technology",
+    "location": "San Francisco, CA",
+    "size": "500-1000 employees",
+    "website": "https://techcorp.com",
+    "founded": 2010,
+    "openJobs": 15
+  },
+  {
+    "Id": 2,
+    "name": "InnovateLabs",
+    "description": "Product innovation company focused on creating cutting-edge SaaS solutions. We help businesses optimize their operations through intelligent software.",
+    "industry": "Technology",
+    "location": "New York, NY",
+    "size": "200-500 employees",
+    "website": "https://innovatelabs.com",
+    "founded": 2015,
+    "openJobs": 8
+  },
+  {
+    "Id": 3,
+    "name": "DesignStudio Pro",
+    "description": "Award-winning design agency that creates exceptional user experiences for digital products. We work with startups and Fortune 500 companies alike.",
+    "industry": "Design",
+    "location": "Austin, TX",
+    "size": "50-100 employees",
+    "website": "https://designstudiopro.com",
+    "founded": 2018,
+    "openJobs": 5
+  },
+  {
+    "Id": 4,
+    "name": "DataTech Solutions",
+    "description": "Data engineering and analytics company providing enterprise-grade solutions. We help organizations harness the power of their data for better decision making.",
+    "industry": "Technology",
+    "location": "Seattle, WA",
+    "size": "100-200 employees",
+    "website": "https://datatechsolutions.com",
+    "founded": 2012,
+    "openJobs": 12
+  },
+  {
+    "Id": 5,
+    "name": "GrowthCo",
+    "description": "Digital marketing agency specializing in growth hacking and performance marketing. We help brands scale their online presence and drive revenue growth.",
+    "industry": "Marketing",
+    "location": "Chicago, IL",
+    "size": "50-100 employees",
+    "website": "https://growthco.com",
+    "founded": 2019,
+    "openJobs": 6
+  },
+  {
+    "Id": 6,
+    "name": "AI Innovations Ltd.",
+    "description": "Artificial intelligence research and development company. We create AI-powered solutions that solve complex business problems across various industries.",
+    "industry": "Technology",
+    "location": "Boston, MA",
+    "size": "100-200 employees",
+    "website": "https://aiinnovations.com",
+    "founded": 2016,
+    "openJobs": 10
+  },
+  {
+    "Id": 7,
+    "name": "CloudFirst Inc.",
+    "description": "Cloud infrastructure and DevOps consulting company. We help organizations migrate to the cloud and build scalable, reliable systems.",
+    "industry": "Technology",
+    "location": "Denver, CO",
+    "size": "200-500 employees",
+    "website": "https://cloudfirst.com",
+    "founded": 2014,
+    "openJobs": 18
+  },
+  {
+    "Id": 8,
+    "name": "StartupTech",
+    "description": "Early-stage startup building innovative mobile and web applications. We're passionate about creating technology that makes people's lives easier.",
+    "industry": "Technology",
+    "location": "San Diego, CA",
+    "size": "10-50 employees",
+    "website": "https://startuptech.com",
+    "founded": 2022,
+    "openJobs": 4
+  },
+  {
+    "Id": 9,
+    "name": "FinanceFlow",
+    "description": "Fintech company developing next-generation financial management tools. We're revolutionizing how businesses handle their finances with AI-powered insights.",
+    "industry": "Finance",
+    "location": "New York, NY",
+    "size": "100-200 employees",
+    "website": "https://financeflow.com",
+    "founded": 2017,
+    "openJobs": 9
+  },
+  {
+    "Id": 10,
+    "name": "HealthTech Solutions",
+    "description": "Healthcare technology company focused on improving patient outcomes through innovative digital health solutions. We work with hospitals and clinics nationwide.",
+    "industry": "Healthcare",
+    "location": "Los Angeles, CA",
+    "size": "200-500 employees",
+    "website": "https://healthtechsolutions.com",
+    "founded": 2013,
+    "openJobs": 14
+  },
+  {
+    "Id": 11,
+    "name": "EduPlatform",
+    "description": "Educational technology company creating interactive learning platforms. We're democratizing access to quality education through innovative digital tools.",
+    "industry": "Education",
+    "location": "Portland, OR",
+    "size": "50-100 employees",
+    "website": "https://eduplatform.com",
+    "founded": 2020,
+    "openJobs": 7
+  },
+  {
+    "Id": 12,
+    "name": "RetailMax",
+    "description": "E-commerce and retail technology company. We provide omnichannel solutions that help retailers create seamless shopping experiences across all touchpoints.",
+    "industry": "Retail",
+    "location": "Miami, FL",
+    "size": "500-1000 employees",
+    "website": "https://retailmax.com",
+    "founded": 2011,
+    "openJobs": 22
+  }
+]

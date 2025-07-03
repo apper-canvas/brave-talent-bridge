@@ -1,0 +1,258 @@
+[
+  {
+    "Id": 1,
+    "title": "Senior Frontend Developer",
+    "company": "TechCorp Inc.",
+    "location": "San Francisco, CA",
+    "type": "Full-time",
+    "salary": {
+      "min": 120000,
+      "max": 150000,
+      "currency": "USD"
+    },
+    "description": "We are seeking a skilled Senior Frontend Developer to join our dynamic team. You will be responsible for developing and maintaining high-quality web applications using modern JavaScript frameworks. The ideal candidate should have strong experience in React, TypeScript, and modern frontend tooling.\n\nKey Responsibilities:\n• Develop responsive and performant web applications\n• Collaborate with design and backend teams\n• Mentor junior developers\n• Participate in code reviews and technical discussions\n• Stay up-to-date with latest frontend technologies",
+    "requirements": [
+      "5+ years of experience in frontend development",
+      "Expert knowledge of React and TypeScript",
+      "Experience with modern build tools (Webpack, Vite)",
+      "Strong understanding of responsive design principles",
+      "Experience with state management libraries (Redux, Zustand)",
+      "Familiarity with testing frameworks (Jest, React Testing Library)",
+      "Good understanding of web performance optimization"
+    ],
+    "benefits": [
+      "Competitive salary and equity package",
+      "Comprehensive health insurance",
+      "Flexible work arrangements",
+      "Professional development budget",
+      "Modern office with latest tech",
+      "Unlimited PTO policy"
+    ],
+    "postedDate": "2024-01-15T10:00:00Z",
+    "applicationDeadline": "2024-02-15T23:59:59Z"
+  },
+  {
+    "Id": 2,
+    "title": "Product Manager",
+    "company": "InnovateLabs",
+    "location": "New York, NY",
+    "type": "Full-time",
+    "salary": {
+      "min": 110000,
+      "max": 140000,
+      "currency": "USD"
+    },
+    "description": "Join our product team as a Product Manager and help shape the future of our SaaS platform. You will work closely with engineering, design, and business teams to define product strategy and deliver exceptional user experiences.\n\nWhat You'll Do:\n• Define and execute product roadmaps\n• Conduct market research and competitive analysis\n• Work with engineering teams to prioritize features\n• Analyze user data to inform product decisions\n• Collaborate with stakeholders across the organization",
+    "requirements": [
+      "3+ years of product management experience",
+      "Experience with SaaS products",
+      "Strong analytical and problem-solving skills",
+      "Excellent communication and leadership abilities",
+      "Experience with product management tools (Jira, Figma)",
+      "Understanding of agile development methodologies",
+      "Bachelor's degree in Business, Engineering, or related field"
+    ],
+    "benefits": [
+      "Competitive salary and bonus structure",
+      "Stock options",
+      "Health, dental, and vision insurance",
+      "Flexible work schedule",
+      "Professional development opportunities",
+      "Team building events and company retreats"
+    ],
+    "postedDate": "2024-01-12T09:30:00Z",
+    "applicationDeadline": "2024-02-12T23:59:59Z"
+  },
+  {
+    "Id": 3,
+    "title": "UX/UI Designer",
+    "company": "DesignStudio Pro",
+    "location": "Austin, TX",
+    "type": "Full-time",
+    "salary": {
+      "min": 80000,
+      "max": 110000,
+      "currency": "USD"
+    },
+    "description": "We're looking for a creative UX/UI Designer to join our growing design team. You'll be responsible for creating intuitive and engaging user experiences for our web and mobile applications. This role offers the opportunity to work on diverse projects and collaborate with cross-functional teams.\n\nResponsibilities:\n• Design user-centered interfaces for web and mobile applications\n• Create wireframes, prototypes, and high-fidelity designs\n• Conduct user research and usability testing\n• Collaborate with developers to ensure design implementation\n• Maintain and evolve our design system",
+    "requirements": [
+      "3+ years of UX/UI design experience",
+      "Proficiency in design tools (Figma, Sketch, Adobe Creative Suite)",
+      "Strong portfolio demonstrating design process and outcomes",
+      "Experience with user research methodologies",
+      "Understanding of responsive design principles",
+      "Knowledge of HTML/CSS is a plus",
+      "Bachelor's degree in Design, HCI, or related field"
+    ],
+    "benefits": [
+      "Competitive salary",
+      "Creative and collaborative work environment",
+      "Latest design tools and equipment",
+      "Health and wellness benefits",
+      "Professional development budget",
+      "Flexible work arrangements"
+    ],
+    "postedDate": "2024-01-10T14:15:00Z",
+    "applicationDeadline": "2024-02-10T23:59:59Z"
+  },
+  {
+    "Id": 4,
+    "title": "Backend Developer",
+    "company": "DataTech Solutions",
+    "location": "Seattle, WA",
+    "type": "Full-time",
+    "salary": {
+      "min": 100000,
+      "max": 130000,
+      "currency": "USD"
+    },
+    "description": "Join our backend team to build scalable and robust server-side applications. You'll work with modern technologies and contribute to the architecture of our distributed systems. This is a great opportunity for a developer who enjoys working with data and building high-performance applications.\n\nKey Responsibilities:\n• Develop and maintain RESTful APIs\n• Design and optimize database schemas\n• Implement security best practices\n• Monitor and improve application performance\n• Collaborate with frontend teams on API integration",
+    "requirements": [
+      "4+ years of backend development experience",
+      "Strong proficiency in Node.js or Python",
+      "Experience with database design (PostgreSQL, MongoDB)",
+      "Knowledge of cloud platforms (AWS, Azure, GCP)",
+      "Understanding of microservices architecture",
+      "Experience with containerization (Docker, Kubernetes)",
+      "Familiarity with CI/CD pipelines"
+    ],
+    "benefits": [
+      "Competitive salary and bonus",
+      "Comprehensive health benefits",
+      "Remote work flexibility",
+      "Learning and development budget",
+      "Modern tech stack and tools",
+      "Collaborative team environment"
+    ],
+    "postedDate": "2024-01-08T11:45:00Z",
+    "applicationDeadline": "2024-02-08T23:59:59Z"
+  },
+  {
+    "Id": 5,
+    "title": "Marketing Specialist",
+    "company": "GrowthCo",
+    "location": "Chicago, IL",
+    "type": "Full-time",
+    "salary": {
+      "min": 65000,
+      "max": 85000,
+      "currency": "USD"
+    },
+    "description": "We're seeking a dynamic Marketing Specialist to help drive our brand awareness and lead generation efforts. You'll work on diverse marketing campaigns across multiple channels and help optimize our marketing funnel. This role is perfect for someone who's passionate about data-driven marketing and creative problem-solving.\n\nWhat You'll Do:\n• Develop and execute multi-channel marketing campaigns\n• Create compelling content for various marketing channels\n• Analyze campaign performance and optimize for ROI\n• Manage social media presence and community engagement\n• Collaborate with sales team on lead generation strategies",
+    "requirements": [
+      "2+ years of marketing experience",
+      "Experience with digital marketing tools (Google Analytics, HubSpot)",
+      "Strong content creation and copywriting skills",
+      "Knowledge of SEO and SEM best practices",
+      "Experience with social media marketing",
+      "Data analysis and reporting skills",
+      "Bachelor's degree in Marketing, Communications, or related field"
+    ],
+    "benefits": [
+      "Competitive salary",
+      "Performance-based bonuses",
+      "Health and dental insurance",
+      "Flexible PTO policy",
+      "Professional development opportunities",
+      "Fun and energetic work environment"
+    ],
+    "postedDate": "2024-01-05T16:20:00Z",
+    "applicationDeadline": "2024-02-05T23:59:59Z"
+  },
+  {
+    "Id": 6,
+    "title": "Data Scientist",
+    "company": "AI Innovations Ltd.",
+    "location": "Boston, MA",
+    "type": "Full-time",
+    "salary": {
+      "min": 130000,
+      "max": 160000,
+      "currency": "USD"
+    },
+    "description": "Join our AI team as a Data Scientist and help build machine learning models that power our intelligent products. You'll work with large datasets, implement cutting-edge algorithms, and translate business problems into data science solutions. This role offers the opportunity to work on challenging problems in a fast-paced environment.\n\nResponsibilities:\n• Develop and deploy machine learning models\n• Analyze complex datasets to extract insights\n• Collaborate with engineering teams on model integration\n• Design experiments and A/B tests\n• Present findings to stakeholders and leadership",
+    "requirements": [
+      "PhD or Master's in Data Science, Statistics, or related field",
+      "5+ years of experience in machine learning",
+      "Strong programming skills in Python and R",
+      "Experience with ML frameworks (TensorFlow, PyTorch, Scikit-learn)",
+      "Knowledge of statistical analysis and hypothesis testing",
+      "Experience with big data technologies (Spark, Hadoop)",
+      "Strong communication and presentation skills"
+    ],
+    "benefits": [
+      "Highly competitive salary",
+      "Equity package",
+      "Premium health benefits",
+      "Flexible work arrangements",
+      "Conference attendance and learning budget",
+      "State-of-the-art computing resources"
+    ],
+    "postedDate": "2024-01-03T13:10:00Z",
+    "applicationDeadline": "2024-02-03T23:59:59Z"
+  },
+  {
+    "Id": 7,
+    "title": "DevOps Engineer",
+    "company": "CloudFirst Inc.",
+    "location": "Denver, CO",
+    "type": "Full-time",
+    "salary": {
+      "min": 110000,
+      "max": 140000,
+      "currency": "USD"
+    },
+    "description": "We're looking for a skilled DevOps Engineer to join our infrastructure team. You'll be responsible for maintaining and scaling our cloud infrastructure, implementing CI/CD pipelines, and ensuring system reliability. This role is ideal for someone who enjoys working with cutting-edge cloud technologies and automation tools.\n\nKey Responsibilities:\n• Manage and scale cloud infrastructure (AWS/Azure/GCP)\n• Implement and maintain CI/CD pipelines\n• Monitor system performance and reliability\n• Automate deployment and infrastructure management\n• Collaborate with development teams on best practices",
+    "requirements": [
+      "4+ years of DevOps/SRE experience",
+      "Strong experience with cloud platforms (AWS, Azure, GCP)",
+      "Proficiency in Infrastructure as Code (Terraform, CloudFormation)",
+      "Experience with containerization (Docker, Kubernetes)",
+      "Knowledge of monitoring and logging tools (Prometheus, ELK Stack)",
+      "Scripting skills (Python, Bash, PowerShell)",
+      "Understanding of security best practices"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Comprehensive health coverage",
+      "Remote work flexibility",
+      "Professional certification support",
+      "Modern tooling and equipment",
+      "Collaborative and innovative team"
+    ],
+    "postedDate": "2024-01-01T09:00:00Z",
+    "applicationDeadline": "2024-02-01T23:59:59Z"
+  },
+  {
+    "Id": 8,
+    "title": "Junior Software Developer",
+    "company": "StartupTech",
+    "location": "San Diego, CA",
+    "type": "Full-time",
+    "salary": {
+      "min": 70000,
+      "max": 90000,
+      "currency": "USD"
+    },
+    "description": "Join our growing startup as a Junior Software Developer and kickstart your career in tech. You'll work on exciting projects, learn from experienced developers, and contribute to building innovative software solutions. This is a great opportunity for recent graduates or career changers looking to grow their technical skills.\n\nWhat You'll Do:\n• Develop features for web and mobile applications\n• Participate in code reviews and team meetings\n• Learn and apply best practices in software development\n• Collaborate with cross-functional teams\n• Contribute to technical documentation",
+    "requirements": [
+      "Bachelor's degree in Computer Science or related field",
+      "1-2 years of programming experience",
+      "Knowledge of at least one programming language (JavaScript, Python, Java)",
+      "Understanding of web development fundamentals",
+      "Familiarity with version control systems (Git)",
+      "Strong problem-solving and learning abilities",
+      "Good communication and teamwork skills"
+    ],
+    "benefits": [
+      "Competitive entry-level salary",
+      "Mentorship and learning opportunities",
+      "Health and dental insurance",
+      "Flexible work schedule",
+      "Stock options",
+      "Fun startup environment"
+    ],
+    "postedDate": "2023-12-28T10:30:00Z",
+    "applicationDeadline": "2024-01-28T23:59:59Z"
+  }
+]

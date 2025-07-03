@@ -1,0 +1,58 @@
+{
+  "Id": 1,
+  "name": "Alex Johnson",
+  "email": "alex.johnson@example.com",
+  "phone": "+1 (555) 123-4567",
+  "location": "San Francisco, CA",
+  "headline": "Senior Frontend Developer & UI/UX Enthusiast",
+  "summary": "Passionate frontend developer with 6+ years of experience building responsive web applications using React, TypeScript, and modern JavaScript frameworks. I love creating intuitive user interfaces that deliver exceptional user experiences. My background includes working with both startups and enterprise companies, giving me a well-rounded perspective on software development.",
+  "skills": [
+    "React",
+    "TypeScript",
+    "JavaScript",
+    "HTML/CSS",
+    "Node.js",
+    "GraphQL",
+    "Redux",
+    "Next.js",
+    "Tailwind CSS",
+    "Jest",
+    "Git",
+    "Figma"
+  ],
+  "experience": [
+    {
+      "company": "TechCorp Inc.",
+      "position": "Senior Frontend Developer",
+      "startDate": "2021-03-01",
+      "endDate": null,
+      "description": "Lead frontend development for enterprise SaaS platform serving 10,000+ users. Architected and implemented a modern React-based dashboard that improved user engagement by 40%. Mentored junior developers and established frontend best practices."
+    },
+    {
+      "company": "StartupXYZ",
+      "position": "Frontend Developer",
+      "startDate": "2019-06-01",
+      "endDate": "2021-02-28",
+      "description": "Built responsive web applications using React and Redux for a fast-growing e-commerce startup. Collaborated closely with designers to implement pixel-perfect UI components. Optimized application performance, reducing load times by 60%."
+    },
+    {
+      "company": "WebDesign Agency",
+      "position": "Junior Frontend Developer",
+      "startDate": "2018-01-01",
+      "endDate": "2019-05-31",
+      "description": "Developed custom websites for small businesses using HTML, CSS, and JavaScript. Learned responsive design principles and gained experience with various CMS platforms. Contributed to improving the agency's development workflow."
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of California, Berkeley",
+      "degree": "Bachelor of Science in Computer Science",
+      "graduationYear": "2017",
+      "gpa": "3.7"
+    }
+  ],
+  "resumeUrl": null,
+  "resumeFileName": null,
+  "profileCompleteness": 85,
+  "lastUpdated": "2024-01-15T10:00:00Z"
+}
