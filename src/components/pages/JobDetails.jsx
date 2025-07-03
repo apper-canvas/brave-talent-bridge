@@ -15,80 +15,83 @@ import userData from "@/services/mockData/user.json";
 import { JobService } from "@/services/api/JobService";
 
 const JobDetails = () => {
-const { id } = useParams()
-  const navigate = useNavigate()
-  const [job, setJob] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [applying, setApplying] = useState(false)
+    const navigate = useNavigate()
+    const params = useParams()
+    const id = params?.id || null
+    const [job, setJob] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+    const [isApplied, setIsApplied] = useState(false)
+    const [isSaved, setIsSaved] = useState(false)
+    const [applying, setApplying] = useState(false)
+
+    // Validate job ID format with comprehensive checks
+    const jobId = id ? parseInt(id, 10) : null
+    const isValidId = Boolean(id && !isNaN(parseInt(id, 10)) && parseInt(id, 10) > 0)
   
-  // Validate ID parameter early
-  const jobId = id ? parseInt(id, 10) : null
-  const isValidId = jobId && !isNaN(jobId) && jobId > 0
-  
-  const loadJob = async () => {
-    // Early validation before API call
-    if (!isValidId) {
-      setError(`Invalid job ID: ${id}`)
-      console.error('Invalid job ID provided:', id)
-      return
+    // Load job data
+    const loadJob = async () => {
+// Early validation before API call
+        if (!isValidId) {
+            setError(`Invalid job ID: ${id}`)
+            console.error('Invalid job ID provided:', id)
+            return
+        }
+        
+        try {
+            setLoading(true)
+            setError(null)
+            const jobData = await JobService.getById(jobId)
+            setJob(jobData)
+        } catch (err) {
+            setError(err.message)
+            console.error('Failed to load job:', err)
+        } finally {
+            setLoading(false)
+        }
     }
-    
-    try {
-      setLoading(true)
-      setError(null)
-      const jobData = await JobService.getById(jobId)
-      setJob(jobData)
-    } catch (err) {
-      setError(err.message)
-      console.error('Failed to load job:', err)
-    } finally {
-      setLoading(false)
+  
+    useEffect(() => {
+        if (!isValidId) {
+            // Handle invalid ID immediately with user-friendly message
+            const errorMsg = !id ? 'No job ID provided' : `Invalid job ID: ${id}`
+            setError(errorMsg)
+            setLoading(false)
+            return
+        }
+        loadJob()
+    }, [id, isValidId])
+// Early return for invalid ID with navigation option
+    if (!isValidId && !loading) {
+        return (
+            <div className="min-h-screen bg-surface pt-20">
+                <div className="max-w-4xl mx-auto px-4 py-8">
+                    <Error 
+                        message={error || 'Job not found'}
+                        onRetry={() => navigate('/jobs')}
+                        type="not-found"
+                    />
+                </div>
+            </div>
+        )
     }
-  }
-  
-  useEffect(() => {
-    if (!isValidId) {
-      // Handle invalid ID immediately
-      setError(`Invalid job ID: ${id || 'undefined'}`)
-      return
+const handleApply = async () => {
+        try {
+            setApplying(true)
+            // In a real app, this would create an application record
+            await new Promise(resolve => setTimeout(resolve, 1000))
+            toast.success('Application submitted successfully!')
+        } catch (err) {
+            toast.error('Failed to submit application')
+            console.error('Failed to apply:', err)
+        } finally {
+            setApplying(false)
+        }
     }
-    loadJob()
-  }, [id, isValidId])
   
-  // Early return for invalid ID with navigation option
-  if (!isValidId && !loading) {
-    return (
-      <div className="min-h-screen bg-surface pt-20">
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <Error 
-            message={`Invalid job ID: ${id || 'not provided'}`}
-            onRetry={() => navigate('/jobs')}
-            type="not-found"
-          />
-        </div>
-      </div>
-    )
-  }
-  
-  const handleApply = async () => {
-    try {
-      setApplying(true)
-      // In a real app, this would create an application record
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      toast.success('Application submitted successfully!')
-    } catch (err) {
-      toast.error('Failed to submit application')
-      console.error('Failed to apply:', err)
-    } finally {
-      setApplying(false)
+    const handleSaveJob = () => {
+        toast.success('Job saved to your favorites!')
     }
-  }
-  
-  const handleSaveJob = () => {
-    toast.success('Job saved to your favorites!')
-  }
-  
   const formatSalary = (salary) => {
     if (!salary) return 'Salary not specified'
     
@@ -128,10 +131,10 @@ const { id } = useParams()
   }
   
 if (loading) return <Loading />
-  if (error) return <Error message={error} onRetry={loadJob} />
-  if (!job) return <Error message="Job not found" onRetry={loadJob} />
+    if (error) return <Error message={error} onRetry={loadJob} />
+    if (!job) return <Error message="Job not found" onRetry={loadJob} />
   
-  return (
+    return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
