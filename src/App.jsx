@@ -1,9 +1,9 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "@/index.css";
-import Layout from "@/components/organisms/Layout";
-import Applications from "@/components/pages/Applications";
+import React from 'react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import '@/index.css'
+import Layout from '@/components/organisms/Layout'
+import Applications from '@/components/pages/Applications'
 import Home from "@/components/pages/Home";
 import JobSearch from "@/components/pages/JobSearch";
 import Companies from "@/components/pages/Companies";
