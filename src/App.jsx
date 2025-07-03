@@ -1,14 +1,14 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import Layout from '@/components/organisms/Layout'
-import Home from '@/components/pages/Home'
-import JobSearch from '@/components/pages/JobSearch'
-import JobDetails from '@/components/pages/JobDetails'
-import Profile from '@/components/pages/Profile'
-import Applications from '@/components/pages/Applications'
-import Companies from '@/components/pages/Companies'
-
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "@/index.css";
+import Layout from "@/components/organisms/Layout";
+import Applications from "@/components/pages/Applications";
+import Home from "@/components/pages/Home";
+import JobSearch from "@/components/pages/JobSearch";
+import Companies from "@/components/pages/Companies";
+import Profile from "@/components/pages/Profile";
+import JobDetails from "@/components/pages/JobDetails";
 function App() {
   return (
     <Router>
@@ -23,10 +23,9 @@ function App() {
             <Route path="/companies" element={<Companies />} />
           </Routes>
         </Layout>
-        
         <ToastContainer
           position="top-right"
-          autoClose={3000}
+          autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
@@ -39,7 +38,7 @@ function App() {
         />
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
