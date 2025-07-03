@@ -15,18 +15,29 @@ import userData from "@/services/mockData/user.json";
 import { JobService } from "@/services/api/JobService";
 
 const JobDetails = () => {
-  const { id } = useParams()
+const { id } = useParams()
   const navigate = useNavigate()
   const [job, setJob] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [applying, setApplying] = useState(false)
   
+  // Validate ID parameter early
+  const jobId = id ? parseInt(id, 10) : null
+  const isValidId = jobId && !isNaN(jobId) && jobId > 0
+  
   const loadJob = async () => {
+    // Early validation before API call
+    if (!isValidId) {
+      setError(`Invalid job ID: ${id}`)
+      console.error('Invalid job ID provided:', id)
+      return
+    }
+    
     try {
       setLoading(true)
       setError(null)
-      const jobData = await JobService.getById(parseInt(id))
+      const jobData = await JobService.getById(jobId)
       setJob(jobData)
     } catch (err) {
       setError(err.message)
@@ -37,8 +48,28 @@ const JobDetails = () => {
   }
   
   useEffect(() => {
+    if (!isValidId) {
+      // Handle invalid ID immediately
+      setError(`Invalid job ID: ${id || 'undefined'}`)
+      return
+    }
     loadJob()
-  }, [id])
+  }, [id, isValidId])
+  
+  // Early return for invalid ID with navigation option
+  if (!isValidId && !loading) {
+    return (
+      <div className="min-h-screen bg-surface pt-20">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <Error 
+            message={`Invalid job ID: ${id || 'not provided'}`}
+            onRetry={() => navigate('/jobs')}
+            type="not-found"
+          />
+        </div>
+      </div>
+    )
+  }
   
   const handleApply = async () => {
     try {
