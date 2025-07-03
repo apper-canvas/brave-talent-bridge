@@ -9,16 +9,13 @@ import ApperIcon from '@/components/ApperIcon'
 const JobCard = ({ job, onApply, applied = false }) => {
   const navigate = useNavigate()
   
-  // Defensive check for job existence
-  if (!job) return null
-  
   const handleViewDetails = () => {
-    navigate(`/jobs/${job.id}`)
+    navigate(`/jobs/${job.Id}`)
   }
   
   const handleApply = (e) => {
     e.stopPropagation()
-    onApply?.(job.id)
+    onApply?.(job.Id)
   }
   
   const formatSalary = (salary) => {

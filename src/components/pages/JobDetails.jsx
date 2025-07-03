@@ -1,97 +1,59 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { format } from "date-fns";
-import { toast } from "react-toastify";
-import ApperIcon from "@/components/ApperIcon";
-import Badge from "@/components/atoms/Badge";
-import Card from "@/components/atoms/Card";
-import Button from "@/components/atoms/Button";
-import Error from "@/components/ui/Error";
-import Loading from "@/components/ui/Loading";
-import companiesData from "@/services/mockData/companies.json";
-import applicationsData from "@/services/mockData/applications.json";
-import jobsData from "@/services/mockData/jobs.json";
-import userData from "@/services/mockData/user.json";
-import { JobService } from "@/services/api/JobService";
+import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { format } from 'date-fns'
+import Card from '@/components/atoms/Card'
+import Button from '@/components/atoms/Button'
+import Badge from '@/components/atoms/Badge'
+import Loading from '@/components/ui/Loading'
+import Error from '@/components/ui/Error'
+import { JobService } from '@/services/api/JobService'
+import ApperIcon from '@/components/ApperIcon'
+import { toast } from 'react-toastify'
 
 const JobDetails = () => {
-    const navigate = useNavigate()
-    const params = useParams()
-    const id = params?.id || null
-    const [job, setJob] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-    const [isApplied, setIsApplied] = useState(false)
-    const [isSaved, setIsSaved] = useState(false)
-    const [applying, setApplying] = useState(false)
-
-    // Validate job ID format with comprehensive checks
-    const jobId = id ? parseInt(id, 10) : null
-    const isValidId = Boolean(id && !isNaN(parseInt(id, 10)) && parseInt(id, 10) > 0)
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [job, setJob] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [applying, setApplying] = useState(false)
   
-    // Load job data
-    const loadJob = async () => {
-// Early validation before API call
-        if (!isValidId) {
-            setError(`Invalid job ID: ${id}`)
-            console.error('Invalid job ID provided:', id)
-            return
-        }
-        
-        try {
-            setLoading(true)
-            setError(null)
-            const jobData = await JobService.getById(jobId)
-            setJob(jobData)
-        } catch (err) {
-            setError(err.message)
-            console.error('Failed to load job:', err)
-        } finally {
-            setLoading(false)
-        }
+  const loadJob = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const jobData = await JobService.getById(parseInt(id))
+      setJob(jobData)
+    } catch (err) {
+      setError(err.message)
+      console.error('Failed to load job:', err)
+    } finally {
+      setLoading(false)
     }
+  }
   
-    useEffect(() => {
-        if (!isValidId) {
-            // Handle invalid ID immediately with user-friendly message
-            const errorMsg = !id ? 'No job ID provided' : `Invalid job ID: ${id}`
-            setError(errorMsg)
-            setLoading(false)
-            return
-        }
-        loadJob()
-    }, [id, isValidId])
-// Early return for invalid ID with navigation option
-    if (!isValidId && !loading) {
-        return (
-            <div className="min-h-screen bg-surface pt-20">
-                <div className="max-w-4xl mx-auto px-4 py-8">
-                    <Error 
-                        message={error || 'Job not found'}
-                        onRetry={() => navigate('/jobs')}
-                        type="not-found"
-                    />
-                </div>
-            </div>
-        )
-    }
-const handleApply = async () => {
-        try {
-            setApplying(true)
-            // In a real app, this would create an application record
-            await new Promise(resolve => setTimeout(resolve, 1000))
-            toast.success('Application submitted successfully!')
-        } catch (err) {
-            toast.error('Failed to submit application')
-            console.error('Failed to apply:', err)
-        } finally {
-            setApplying(false)
-        }
-    }
+  useEffect(() => {
+    loadJob()
+  }, [id])
   
-    const handleSaveJob = () => {
-        toast.success('Job saved to your favorites!')
+  const handleApply = async () => {
+    try {
+      setApplying(true)
+      // In a real app, this would create an application record
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      toast.success('Application submitted successfully!')
+    } catch (err) {
+      toast.error('Failed to submit application')
+      console.error('Failed to apply:', err)
+    } finally {
+      setApplying(false)
     }
+  }
+  
+  const handleSaveJob = () => {
+    toast.success('Job saved to your favorites!')
+  }
+  
   const formatSalary = (salary) => {
     if (!salary) return 'Salary not specified'
     
@@ -130,11 +92,11 @@ const handleApply = async () => {
     }
   }
   
-if (loading) return <Loading />
-    if (error) return <Error message={error} onRetry={loadJob} />
-    if (!job) return <Error message="Job not found" onRetry={loadJob} />
+  if (loading) return <Loading />
+  if (error) return <Error message={error} onRetry={loadJob} />
+  if (!job) return <Error message="Job not found" />
   
-    return (
+  return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
@@ -150,32 +112,34 @@ if (loading) return <Loading />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
             {/* Job Header */}
-<Card>
+            <Card>
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center text-white font-bold text-2xl">
-                  {job?.company?.charAt(0) || 'C'}
+                  {job.company?.charAt(0) || 'C'}
                 </div>
                 <div className="flex-1">
                   <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                    {job?.title}
+                    {job.title}
                   </h1>
-<p className="text-xl text-gray-600 mb-4">{job?.company}</p>
+                  <p className="text-xl text-gray-600 mb-4">{job.company}</p>
+                  
                   <div className="flex items-center gap-4 text-gray-600 mb-4">
                     <div className="flex items-center gap-1">
                       <ApperIcon name="MapPin" className="w-4 h-4" />
-                      {job?.location}
+                      {job.location}
                     </div>
                     <div className="flex items-center gap-1">
                       <ApperIcon name="Calendar" className="w-4 h-4" />
-                      Posted {job?.postedDate ? format(new Date(job.postedDate), 'MMM dd, yyyy') : 'Unknown'}
+                      Posted {format(new Date(job.postedDate), 'MMM dd, yyyy')}
                     </div>
                   </div>
-<div className="flex items-center gap-2 flex-wrap">
-                    <Badge variant={getJobTypeColor(job?.type)}>
-                      {job?.type}
+                  
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Badge variant={getJobTypeColor(job.type)}>
+                      {job.type}
                     </Badge>
                     <Badge variant="default">
-                      {formatSalary(job?.salary)}
+                      {formatSalary(job.salary)}
                     </Badge>
                   </div>
                 </div>
@@ -183,17 +147,17 @@ if (loading) return <Loading />
             </Card>
             
             {/* Job Description */}
-<Card>
+            <Card>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Job Description</h2>
               <div className="prose max-w-none">
                 <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {job?.description}
+                  {job.description}
                 </p>
               </div>
             </Card>
             
             {/* Requirements */}
-{job?.requirements && job.requirements.length > 0 && (
+            {job.requirements && job.requirements.length > 0 && (
               <Card>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Requirements</h2>
                 <ul className="space-y-3">
@@ -208,7 +172,7 @@ if (loading) return <Loading />
             )}
             
             {/* Benefits */}
-{job?.benefits && job.benefits.length > 0 && (
+            {job.benefits && job.benefits.length > 0 && (
               <Card>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Benefits</h2>
                 <ul className="space-y-3">
@@ -227,20 +191,20 @@ if (loading) return <Loading />
             <Card className="sticky top-6">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Apply for this job</h3>
               
-<div className="space-y-4 mb-6">
+              <div className="space-y-4 mb-6">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Salary</span>
-                  <span className="font-medium">{formatSalary(job?.salary)}</span>
+                  <span className="font-medium">{formatSalary(job.salary)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Job Type</span>
-                  <span className="font-medium">{job?.type}</span>
+                  <span className="font-medium">{job.type}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-600">Location</span>
-                  <span className="font-medium">{job?.location}</span>
+                  <span className="font-medium">{job.location}</span>
                 </div>
-{job?.applicationDeadline && (
+                {job.applicationDeadline && (
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-600">Deadline</span>
                     <span className="font-medium">

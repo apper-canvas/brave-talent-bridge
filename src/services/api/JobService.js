@@ -10,14 +10,8 @@ class JobServiceClass {
     return [...this.jobs]
   }
 
-async getById(id) {
+  async getById(id) {
     await this.delay(200)
-    
-    // Validate ID parameter
-    if (id === null || id === undefined || isNaN(id) || id <= 0) {
-      throw new Error(`Invalid job ID provided: ${id}`)
-    }
-    
     const job = this.jobs.find(j => j.Id === id)
     if (!job) {
       throw new Error(`Job with ID ${id} not found`)
@@ -36,14 +30,8 @@ async getById(id) {
     return { ...newJob }
   }
 
-async update(id, jobData) {
+  async update(id, jobData) {
     await this.delay(300)
-    
-    // Validate ID parameter
-    if (id === null || id === undefined || isNaN(id) || id <= 0) {
-      throw new Error(`Invalid job ID provided for update: ${id}`)
-    }
-    
     const index = this.jobs.findIndex(j => j.Id === id)
     if (index === -1) {
       throw new Error(`Job with ID ${id} not found`)
@@ -53,14 +41,8 @@ async update(id, jobData) {
     return { ...this.jobs[index] }
   }
 
-async delete(id) {
+  async delete(id) {
     await this.delay(200)
-    
-    // Validate ID parameter
-    if (id === null || id === undefined || isNaN(id) || id <= 0) {
-      throw new Error(`Invalid job ID provided for deletion: ${id}`)
-    }
-    
     const index = this.jobs.findIndex(j => j.Id === id)
     if (index === -1) {
       throw new Error(`Job with ID ${id} not found`)

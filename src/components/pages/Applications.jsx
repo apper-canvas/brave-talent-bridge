@@ -136,9 +136,9 @@ const Applications = () => {
               />
             ) : (
               <div className="space-y-6">
-{filteredApplications.map((application, index) => (
+                {filteredApplications.map((application) => (
                   <ApplicationCard
-                    key={application?.id || `app-${index}`}
+                    key={application.Id}
                     application={application}
                     job={application.job}
                     onViewJob={handleViewJob}
