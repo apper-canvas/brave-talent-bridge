@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import SearchBar from '@/components/molecules/SearchBar'
-import FilterPanel from '@/components/molecules/FilterPanel'
-import JobCard from '@/components/molecules/JobCard'
-import Button from '@/components/atoms/Button'
-import Loading from '@/components/ui/Loading'
-import Error from '@/components/ui/Error'
-import Empty from '@/components/ui/Empty'
-import { JobService } from '@/services/api/JobService'
-import { toast } from 'react-toastify'
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Button from "@/components/atoms/Button";
+import JobCard from "@/components/molecules/JobCard";
+import SearchBar from "@/components/molecules/SearchBar";
+import FilterPanel from "@/components/molecules/FilterPanel";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import { JobService } from "@/services/api/JobService";
 
 const JobSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -175,7 +175,7 @@ const JobSearch = () => {
             <FilterPanel onFilterChange={handleFilterChange} />
           </div>
           
-          <div className="lg:col-span-3">
+<div className="lg:col-span-3">
             {filteredJobs.length === 0 ? (
               <Empty
                 type="jobs"
@@ -183,16 +183,14 @@ const JobSearch = () => {
                 actionLabel="Clear Filters"
               />
             ) : (
-              <>
-                <div className="space-y-6">
-{currentJobs.map((job) => (
-                    <JobCard
-                      key={job.id}
-                      job={job}
-                      onApply={handleApply}
-                    />
-                  ))}
-                </div>
+              <div className="space-y-6">
+                {currentJobs.map((job, index) => (
+                  <JobCard
+                    key={job.id || `job-${index}`}
+                    job={job}
+                    onApply={handleApply}
+                  />
+                ))}
                 
                 {/* Pagination */}
                 {totalPages > 1 && (
@@ -225,7 +223,7 @@ const JobSearch = () => {
                     />
                   </div>
                 )}
-              </>
+              </div>
             )}
           </div>
         </div>
