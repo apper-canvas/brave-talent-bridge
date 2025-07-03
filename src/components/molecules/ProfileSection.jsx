@@ -61,7 +61,12 @@ const ProfileSection = ({ title, icon, children, editable = false, onSave, class
         )}
       </div>
       
-      {React.cloneElement(children, { isEditing })}
+{typeof children === 'function' 
+        ? children({ isEditing })
+        : React.isValidElement(children) && children.type !== 'div'
+        ? React.cloneElement(children, { isEditing })
+        : children
+      }
     </Card>
   )
 }

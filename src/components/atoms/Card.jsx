@@ -21,10 +21,20 @@ const Card = ({
     xl: "p-10",
   }
   
+// Filter out React-specific props that shouldn't reach DOM
+  const { 
+    isEditing, 
+    isediting, 
+    onSave, 
+    onCancel, 
+    onEdit,
+    ...domProps 
+  } = props;
+
   return (
     <div
       className={`${baseClasses} ${hoverClasses} ${paddingClasses[padding]} ${className}`}
-      {...props}
+      {...domProps}
     >
       {children}
     </div>
