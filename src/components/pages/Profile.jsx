@@ -81,59 +81,150 @@ if (loading) return <Loading type="profile" />
           </p>
         </div>
         
-        <div className="space-y-8">
+<div className="space-y-8">
           {/* Profile Header */}
-<Card>
+          <Card>
             <div className="flex items-start gap-6">
               <div className="w-24 h-24 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-3xl">
                 {user?.name?.charAt(0) || 'U'}
               </div>
               <div className="flex-1">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  {user?.name || 'Your Name'}
-</h2>
-                <p className="text-lg text-gray-600 mb-3">
-                  {user?.headline || 'Add your professional headline'}
-                </p>
-                <div className="flex items-center gap-4 text-gray-500 mb-4">
-                  <div className="flex items-center gap-1">
-                    <ApperIcon name="MapPin" className="w-4 h-4" />
-                    {user?.location || 'Add location'}
+                {editing.basic ? (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Full Name
+                      </label>
+                      <Input
+                        value={user?.name || ''}
+                        onChange={(e) => setUser({ ...user, name: e.target.value })}
+                        placeholder="Enter your full name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Professional Headline
+                      </label>
+                      <Input
+                        value={user?.headline || ''}
+                        onChange={(e) => setUser({ ...user, headline: e.target.value })}
+                        placeholder="e.g., Senior Software Engineer at TechCorp"
+                      />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Location
+                        </label>
+                        <Input
+                          value={user?.location || ''}
+                          onChange={(e) => setUser({ ...user, location: e.target.value })}
+                          placeholder="City, Country"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Email
+                        </label>
+                        <Input
+                          type="email"
+                          value={user?.email || ''}
+                          onChange={(e) => setUser({ ...user, email: e.target.value })}
+                          placeholder="your.email@example.com"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Phone
+                        </label>
+                        <Input
+                          type="tel"
+                          value={user?.phone || ''}
+                          onChange={(e) => setUser({ ...user, phone: e.target.value })}
+                          placeholder="+1 (555) 123-4567"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 pt-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => {
+                          setEditing({ ...editing, basic: false })
+                          loadProfile() // Reset any unsaved changes
+                        }}
+                        icon="X"
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={async () => {
+                          await handleSaveProfile('basic', {
+                            name: user.name,
+                            headline: user.headline,
+                            location: user.location,
+                            email: user.email,
+                            phone: user.phone
+                          })
+                          setEditing({ ...editing, basic: false })
+                        }}
+                        icon="Check"
+                      >
+                        Save Changes
+                      </Button>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <ApperIcon name="Mail" className="w-4 h-4" />
-                    {user?.email || 'Add email'}
-</div>
-                  <div className="flex items-center gap-1">
-                    <ApperIcon name="Phone" className="w-4 h-4" />
-                    {user?.phone || 'Add phone'}
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    onClick={() => setEditing({ ...editing, basic: true })}
-                    icon="Edit"
-                  >
-                    Edit Profile
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => document.getElementById('resume-upload').click()}
-                    icon="Upload"
-                  >
-                    Upload Resume
-                  </Button>
-                  <input
-                    id="resume-upload"
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    onChange={handleFileUpload}
-                    className="hidden"
-                  />
-                </div>
+                ) : (
+                  <>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                      {user?.name || 'Your Name'}
+                    </h2>
+                    <p className="text-lg text-gray-600 mb-3">
+                      {user?.headline || 'Add your professional headline'}
+                    </p>
+                    <div className="flex items-center gap-4 text-gray-500 mb-4">
+                      <div className="flex items-center gap-1">
+                        <ApperIcon name="MapPin" className="w-4 h-4" />
+                        {user?.location || 'Add location'}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <ApperIcon name="Mail" className="w-4 h-4" />
+                        {user?.email || 'Add email'}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <ApperIcon name="Phone" className="w-4 h-4" />
+                        {user?.phone || 'Add phone'}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => setEditing({ ...editing, basic: true })}
+                        icon="Edit"
+                      >
+                        Edit Profile
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => document.getElementById('resume-upload').click()}
+                        icon="Upload"
+                      >
+                        Upload Resume
+                      </Button>
+                      <input
+                        id="resume-upload"
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleFileUpload}
+                        className="hidden"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </Card>
